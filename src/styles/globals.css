@@ -2,26 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+.text-shadow-logo{
+    text-shadow: -1px 0 0 #F0F0F0, 0 -1px 0 #F0F0F0, -2px -1px 0 #F0F0F0, -1px -2px 0 #3C486B, -3px -2px 0 #3C486B, -2px -3px 0 #3C486B, -4px -3px 0 #F45050, -3px -4px 0 #F9D949, -5px -4px 0 #F9D949, -4px -5px 0 #F9D949, -6px -5px 0 #F45050, -5px -6px 0 #F45050, -7px -6px 0 #3C486B;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.text-shadow-retro-small{
+    text-shadow: 0.3px 0.3px #F0F0F0, 0.6px 0.6px #F0F0F0, 0.9px 0.9px #F9D949, 1.2px 1.2px #F9D949, 1.5px 1.5px #F9D949, 1.8px 1.8px #F9D949, 2.1px 2.1px #F9D949, 2.4px 2.4px #3C486B, 2.7px 2.7px #3C486B, 3.0px 3.0px
 }
