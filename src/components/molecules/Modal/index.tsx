@@ -2,14 +2,30 @@ import React, { Fragment, ReactNode, useEffect, useRef, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import clsx from 'clsx';
 
+// type TransitionVarian = 'botom-to-top' | 'right-to-left';
+
 type ModalProps = {
   show: boolean;
   children?: ReactNode;
   onClose: () => void;
   backdropStatic?: boolean;
   size?: 'sm' | 'lg';
+  // transition: TransitionVarian;
 };
 
+// const getTransition = (varian: TransitionVarian) => {
+//   switch (varian) {
+//     case 'botom-to-top':
+//       return {
+//         enter: 'transform transition ease-out duration-300',
+//         enterFrom: '-translate-y-[10rem]',
+//         enterTo: 'translate-y-0',
+//         leave: 'transform transition ease-in duration-300',
+//         leaveFrom: 'translate-y-0',
+//         leaveTo: ' -translate-y-[10rem]',
+//       };
+//   }
+// };
 function Modal({
   show = false,
   children,
@@ -57,7 +73,7 @@ function Modal({
             leaveTo="opacity-0"
           >
             <div
-              className="fixed inset-0 bg-green-primary bg-opacity-75 backdrop-blur-sm transition-opacity"
+              className="fixed inset-0 bg-dark-primary bg-opacity-75 backdrop-blur-sm transition-opacity"
               aria-hidden="true"
             />
           </Transition.Child>
@@ -66,12 +82,12 @@ function Modal({
             <div className="min-h-full flex items-center justify-center px-4 py-6">
               <Transition.Child
                 as={Fragment}
-                enter="ease-out duration-400"
-                enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                enterTo="opacity-100 translate-y-0 sm:scale-100"
-                leave="ease-in duration-200"
-                leaveFrom="opacity-100 translate-y-0 sm:scale-100"
-                leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                enter="transform transition ease-out duration-500"
+                enterFrom="translate-y-[7rem]"
+                enterTo="translate-y-0"
+                leave="transform transition ease-in duration-300"
+                leaveFrom="translate-y-0"
+                leaveTo=" translate-y-[20rem]"
               >
                 <Dialog.Panel
                   className={clsx('mx-auto w-full rounded-lg', sizeOptions)}

@@ -2,6 +2,8 @@ import '@/styles/globals.css';
 import 'tailwindcss/tailwind.css';
 import type { AppProps } from 'next/app';
 import localFont from 'next/font/local';
+import { store } from '@/app/store';
+import { Provider } from 'react-redux';
 
 const sugarPeachy = localFont({
   src: [
@@ -57,8 +59,10 @@ const baristo = localFont({
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <main className={`${sugarPeachy.variable} ${baristo.variable}`}>
-      <Component {...pageProps} />
-    </main>
+    <Provider store={store}>
+      <main className={`${sugarPeachy.variable} ${baristo.variable}`}>
+        <Component {...pageProps} />
+      </main>
+    </Provider>
   );
 }

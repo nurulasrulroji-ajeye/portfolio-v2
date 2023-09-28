@@ -23,6 +23,7 @@ type ButtonVariant =
   | 'solid'
   | 'green-primary'
   | 'green-secondary'
+  | 'dark'
   | 'circle';
 
 const getVariant = (variant: ButtonVariant) => {
@@ -33,6 +34,8 @@ const getVariant = (variant: ButtonVariant) => {
       return 'py-3 px-8 rounded-full bg-green-primary text-yellow-color lg:hover:shadow-yellow-red-blues shadow-yellow-red-blues lg:shadow-none lg:transition-all lg:ease-in-out lg:duration-700';
     case 'green-secondary':
       return 'bg-green-secondary px-8 py-2 rounded-[30px] text-white-color hover:bg-green-primary hover:text-yellow-color transition-all ease-in-out duration-300 shadow-md';
+    case 'dark':
+      return 'py-3 px-8 rounded-full bg-dark-primary text-white-color shadow-6';
     default:
       return undefined;
   }
