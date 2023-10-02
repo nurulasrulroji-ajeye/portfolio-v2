@@ -2,10 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-.text-shadow-logo{
-    text-shadow: -1px 0 0 #F0F0F0, 0 -1px 0 #F0F0F0, -2px -1px 0 #F0F0F0, -1px -2px 0 #3C486B, -3px -2px 0 #3C486B, -2px -3px 0 #3C486B, -4px -3px 0 #F45050, -3px -4px 0 #F9D949, -5px -4px 0 #F9D949, -4px -5px 0 #F9D949, -6px -5px 0 #F45050, -5px -6px 0 #F45050, -7px -6px 0 #3C486B;
-}
-
-.text-shadow-retro-small{
-    text-shadow: 0.3px 0.3px #F0F0F0, 0.6px 0.6px #F0F0F0, 0.9px 0.9px #F9D949, 1.2px 1.2px #F9D949, 1.5px 1.5px #F9D949, 1.8px 1.8px #F9D949, 2.1px 2.1px #F9D949, 2.4px 2.4px #3C486B, 2.7px 2.7px #3C486B, 3.0px 3.0px
+@layer base {
+    body {
+        @apply dark:bg-gray-800 bg-white
+    }
 }

@@ -4,6 +4,7 @@ import type { AppProps } from 'next/app';
 import localFont from 'next/font/local';
 import { store } from '@/app/store';
 import { Provider } from 'react-redux';
+import { ThemeProvider } from 'next-themes';
 
 const sugarPeachy = localFont({
   src: [
@@ -60,9 +61,11 @@ const baristo = localFont({
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
-      <main className={`${sugarPeachy.variable} ${baristo.variable}`}>
-        <Component {...pageProps} />
-      </main>
+      <ThemeProvider attribute="class">
+        <main className={`${sugarPeachy.variable} ${baristo.variable}`}>
+          <Component {...pageProps} />
+        </main>
+      </ThemeProvider>
     </Provider>
   );
 }

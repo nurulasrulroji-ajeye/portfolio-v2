@@ -1,7 +1,6 @@
-import React from 'react';
+import { Button } from '@/components/atoms';
 import Image from 'next/image';
-import { heroImg } from '@/assets';
-import { SocmedList } from '@/components/atoms';
+import Link from 'next/link';
 
 export interface StaticImageData {
   src: string;
@@ -25,8 +24,8 @@ type CardProfileProps = {
 
 export const CardProfile = (props: CardProfileProps) => {
   return (
-    <div className="w-fit flex flex-col rounded-xl shadow-6 p-4 gap-3 md:shadow-none md:hover:shadow-6 transition-all ease-in-out duration-500">
-      <div className="relative w-[15rem] h-[20rem] md:w-[20rem] md:h-[30rem] overflow-hidden rounded-xl ">
+    <div className="w-fit flex flex-col rounded-xl shadow-6 p-4 gap-3 lg:shadow-none lg:hover:shadow-6 transition-all ease-in-out duration-500 dark:lg:hover:shadow-d6">
+      <div className="relative w-[15rem] h-[20rem] lg:w-[17rem] lg:h-[25rem] ll:w-[20rem] ll:h-[27rem] overflow-hidden rounded-xl ">
         <Image
           src={props.image}
           alt={props.name}
@@ -35,16 +34,38 @@ export const CardProfile = (props: CardProfileProps) => {
         />
       </div>
       <div className="flex flex-col max-w-[15rem]">
-        <p className="text-lg font-semibold font-primary leading-none text-typo-neutral-100">
+        <p className="text-lg font-semibold font-primary leading-none text-typo-neutral-100 dark:text-white-color">
           {props.name}
         </p>
-        <p className="font-serif text-sm font-medium text-typo-neutral-80">
+        <p className="font-serif text-sm font-medium text-typo-neutral-80 dark:text-typo-neutral-40">
           Based On {props.location}
         </p>
       </div>
       <p className="max-w-[15rem] md:max-w-full font-serif">
         {props.description}
       </p>
+      <div className="w-full flex gap-3 mt-4">
+        <Link
+          href="#contact"
+          onClick={(e) => {
+            e.preventDefault();
+            const href = e.currentTarget.href;
+            const targetId = href.replace(/.*\#/, '');
+            const elem = document.getElementById(targetId);
+            elem?.scrollIntoView({
+              behavior: 'smooth',
+            });
+          }}
+          className="w-full"
+        >
+          <Button variant="primary" className="w-full">
+            Lets Talk
+          </Button>
+        </Link>
+        <a href="/files/cv.pdf" target="_blank">
+          <Button variant="primary">CV</Button>
+        </a>
+      </div>
     </div>
   );
 };

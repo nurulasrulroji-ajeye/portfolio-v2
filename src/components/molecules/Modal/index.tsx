@@ -10,7 +10,7 @@ type ModalProps = {
   onClose: () => void;
   backdropStatic?: boolean;
   size?: 'sm' | 'lg';
-  // transition: TransitionVarian;
+  backdropNone?: boolean;
 };
 
 // const getTransition = (varian: TransitionVarian) => {
@@ -32,6 +32,7 @@ function Modal({
   onClose,
   backdropStatic = false,
   size,
+  backdropNone,
 }: ModalProps) {
   const [isOpen, setIsOpen] = useState<boolean>(show ? show : false);
   const closeButtonRef = useRef<any | null>(null);
@@ -63,36 +64,38 @@ function Modal({
           initialFocus={closeButtonRef}
           className="relative z-[9999999]"
         >
-          <Transition.Child
-            as={Fragment}
-            enter="ease-out duration-300"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="ease-in duration-200"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
-          >
-            <div
-              className="fixed inset-0 bg-dark-primary bg-opacity-75 backdrop-blur-sm transition-opacity"
-              aria-hidden="true"
-            />
-          </Transition.Child>
+          {backdropNone ? null : (
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="opacity-0"
+              enterTo="opacity-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
+            >
+              <div
+                className="fixed inset-0 bg-dark-primary bg-opacity-75 backdrop-blur-sm transition-opacity"
+                aria-hidden="true"
+              />
+            </Transition.Child>
+          )}
 
           <div className="fixed inset-0 overflow-y-auto">
             <div className="min-h-full flex items-center justify-center px-4 py-6">
               <Transition.Child
                 as={Fragment}
                 enter="transform transition ease-out duration-500"
-                enterFrom="translate-y-[7rem]"
+                enterFrom="translate-y-[3rem]"
                 enterTo="translate-y-0"
                 leave="transform transition ease-in duration-300"
                 leaveFrom="translate-y-0"
-                leaveTo=" translate-y-[20rem]"
+                leaveTo=" translate-y-[10rem]"
               >
                 <Dialog.Panel
                   className={clsx('mx-auto w-full rounded-lg', sizeOptions)}
                 >
-                  <div className="px-4 pt-3 pb-4">{children}</div>
+                  <div className=" pt-3 pb-4">{children}</div>
                 </Dialog.Panel>
               </Transition.Child>
             </div>

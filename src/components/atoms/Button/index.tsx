@@ -18,24 +18,14 @@ export type ButtonProps = React.DetailedHTMLProps<
 > &
   ButtonOptions;
 
-type ButtonVariant =
-  | 'baby-blue'
-  | 'solid'
-  | 'green-primary'
-  | 'green-secondary'
-  | 'dark'
-  | 'circle';
+type ButtonVariant = 'primary' | 'light';
 
 const getVariant = (variant: ButtonVariant) => {
   switch (variant) {
-    case 'baby-blue':
-      return 'py-3 flex gap-3 bg-[#BAD7E9] text-dark-primary rounded-full px-8 md:hover:bg-yellow-color md:hover:text-green-primary md:transition-all md:duration-500 md:ease-in-out';
-    case 'green-primary':
-      return 'py-3 px-8 rounded-full bg-green-primary text-yellow-color lg:hover:shadow-yellow-red-blues shadow-yellow-red-blues lg:shadow-none lg:transition-all lg:ease-in-out lg:duration-700';
-    case 'green-secondary':
-      return 'bg-green-secondary px-8 py-2 rounded-[30px] text-white-color hover:bg-green-primary hover:text-yellow-color transition-all ease-in-out duration-300 shadow-md';
-    case 'dark':
-      return 'py-3 px-8 rounded-full bg-dark-primary text-white-color shadow-6';
+    case 'primary':
+      return 'py-2 md:py-3 px-6 md:px-8 rounded-full bg-dark-primary text-white-color shadow-6 lg:hover:bg-white-color lg:hover:text-dark-primary lg:transition-all lg:eas-in-out lg:duration-500 lg:shadow-none lg:hover:border lg:hover:border-dark-primary dark:bg-white-color dark:lg:hover:border-white-color dark:lg:hover:bg-dark-primary dark:lg:hover:text-white-color dark:text-dark-primary';
+    case 'light':
+      return 'py-3 px-8 rounded-full bg-white-color text-dark-primary shadow-6 lg:hover:bg-dark-primary lg:hover:text-white-color lg:transition-all lg:eas-in-out lg:duration-500 lg:shadow-none lg:hover:border lg:hover:border-white-color';
     default:
       return undefined;
   }
@@ -43,7 +33,7 @@ const getVariant = (variant: ButtonVariant) => {
 
 export const Button = forwardRef<Ref, ButtonProps>((props, ref) => {
   const {
-    variant = 'solid',
+    variant = 'primary',
     type = 'button',
     className,
     children,
@@ -51,7 +41,7 @@ export const Button = forwardRef<Ref, ButtonProps>((props, ref) => {
   } = props;
 
   const merged = clsx(
-    'shadow-md font-bold transition-colors justify-center items-center',
+    'shadow-md font-bold transition-colors justify-center items-center font-serif',
     getVariant(variant),
     className
   );

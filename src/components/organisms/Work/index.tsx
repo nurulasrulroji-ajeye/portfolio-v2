@@ -1,3 +1,5 @@
+import { InfinityHorizontalScroll } from '@/components/molecules';
+import { HorizonInfinityData } from '@/domain/dummyData/PartsData';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
 
 export const Work = () => {
@@ -10,14 +12,20 @@ export const Work = () => {
   const rotateX2 = useTransform(y2, [-100, 100], [30, -30]);
   const rotateY2 = useTransform(x2, [-100, 100], [-30, 30]);
   return (
-    <div className="w-full bg-baby-red px-5 md:px-16 lg:px-32">
-      <div className="pt-24 w-full flex flex-col gap-5 pb-32">
+    <div
+      className="w-full bg-white-color px-5 md:px-8 lg:px-16 ll:px-40 relative pb-10 dark:bg-dark-primary"
+      id="works"
+    >
+      <div className="absolute -bottom-4 md:-bottom-10 inset-x-0 mx-0 md:mx-5 lg:mx-10">
+        <InfinityHorizontalScroll data={HorizonInfinityData} />
+      </div>
+      <div className="pt-32 md:pt-44 w-full flex flex-col gap-5 pb-20 md:pb-32">
         <div className="flex w-full justify-center items-center">
-          <h1 className="text-4xl font-sugarpeachy font-bold border-b-2 border-yellow-color text-green-primary drop-shadow-[5px_0px_#BAD7E9] lg:text-6xl">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-primary text-dark-primary dark:text-white-color">
             Work Experience.
           </h1>
         </div>
-        <p className="text-green-primary/90 drop-shadow-md font-sugarpeachy text-center lg:text-2xl">
+        <p className="text-typo-neutral-80 drop-shadow-md font-serif text-center text-base md:text-lg lg:text-2xl dark:text-typo-neutral-40">
           <q>
             Hustle hard, pray harder, and outsmart the game - because fun is the
             secret ingredient to a victorious journey!
@@ -30,21 +38,21 @@ export const Work = () => {
             dragElastic={0.16}
             dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
             whileTap={{ cursor: 'grabbing' }}
-            className="bg-baby-blue p-4 relative rounded-[30px] shadow-pink-yellow-cream border-r-2 border-black border-b-2 mr-3 "
+            className="bg-white-color p-5 relative rounded-[30px] shadow-1 dark:bg-dark-primary dark:shadow-d1"
           >
             <motion.div
               style={{ x, y, rotateX, rotateY, z: 100 }}
-              className="w-[50px] h-[50px] bg-yellow-color border-2 shadow-md border-green-primary rounded-full flex justify-center items-center text-2xl absolute -top-8 -left-4 font-baristo"
+              className="w-[50px] h-[50px] bg-white-color shadow-1 rounded-full flex justify-center items-center text-2xl absolute -top-8 -left-4 font-primary dark:bg-dark-primary dark:shadow-d1"
             >
-              1
+              I
             </motion.div>
-            <h4 className="font-sugarpeachy text-green-primary leading-[1] text-lg md:text-2xl md:leading-[1]">
-              Junior Frontend Developer <br />
-              <span className="text-sm md:text-base">
+            <h4 className="font-primary text-dark-primary leading-[1] text-lg md:text-2xl md:leading-[1] dark:text-white-color">
+              Frontend Developer <br />
+              <span className="text-sm md:text-base font-serif text-typo-neutral-80 dark:text-typo-neutral-40">
                 at PT. Opinia Media Technology
               </span>
             </h4>
-            <ul className="list-disc font-sugarpeachy text-sm pt-3 pl-3 text-green-primary/80 md:text-lg">
+            <ul className="list-disc font-serif text-sm pt-3 pl-5 text-dark-primary md:text-lg dark:text-white-color">
               <li>
                 Assisted in developing and maintaining websites using HTML, CSS,
                 and TypeScript.
@@ -79,7 +87,7 @@ export const Work = () => {
             dragElastic={0.16}
             dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
             whileTap={{ cursor: 'grabbing' }}
-            className="bg-baby-blue p-4 relative rounded-[30px] shadow-pink-yellow-cream border-r-2 border-black border-b-2 mr-3 "
+            className="bg-white-color p-5 relative rounded-[30px] shadow-1 dark:bg-dark-primary dark:shadow-d1"
           >
             <motion.div
               style={{
@@ -89,14 +97,14 @@ export const Work = () => {
                 rotateY: rotateY2,
                 z: 100,
               }}
-              className="w-[50px] h-[50px] bg-yellow-color border-2 shadow-md border-green-primary rounded-full flex justify-center items-center text-2xl absolute -top-8 -left-4 font-baristo"
+              className="w-[50px] h-[50px] bg-white-color shadow-1 rounded-full flex justify-center items-center text-2xl absolute -top-8 -left-4 font-primary dark:bg-dark-primary dark:shadow-d1"
             >
-              2
+              II
             </motion.div>
-            <h4 className="font-sugarpeachy text-green-primary leading-[1] text-lg md:text-2xl md:leading-[1]">
+            <h4 className="font-primary text-dark-primary leading-[1] text-lg md:text-2xl md:leading-[1] dark:text-white-color">
               Freelance Frontend Developer
             </h4>
-            <ul className="list-disc font-sugarpeachy text-sm pt-3 pl-3 text-green-primary/80 md:text-lg">
+            <ul className="list-disc font-serif text-sm pt-3 pl-5 text-dark-primary md:text-lg dark:text-typo-neutral-40">
               <li>
                 Completed frontend projects for diverse clients with unique
                 requirements.

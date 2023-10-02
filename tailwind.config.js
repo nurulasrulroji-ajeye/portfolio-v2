@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: 'class',
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -20,7 +21,7 @@ module.exports = {
         'baby-red': '#E16162',
         'yellow-color': '#F9D949',
         'white-color': '#FaFaFa',
-        'dark-primary': '#2C3333',
+        'dark-primary': '#0A0A0A',
         'dark-secondary': '#395B64',
 
         'typo-neutral-10': '#FFFFFF',
@@ -43,8 +44,22 @@ module.exports = {
         'pink-yellow-cream':
           '5px 5px rgba(249,217,73,1), 7px 7px rgba(0,0,0,1), 12px 12px #1B9C85, 14px 14px rgba(0,0,0,1), 19px 19px #BDF2D5, 21px 21px #000',
         1: '0px 1px 3px 0px rgba(16, 24, 40, 0.10), 0px -1px 2px 0px rgba(16, 24, 40, 0.06)',
+        d1: '0px 1px 3px 0px rgba(239, 231, 215, 0.10), 0px -1px 2px 0px rgba(239, 231, 215, 0.06)',
         2: '0px 1px 2px 0px rgba(0, 0, 0, 0.12)',
         6: '0px 0px 13px 0px rgba(13, 15, 19, 0.10), 0px 2px 4px -2px rgba(16, 24, 40, 0.06)',
+        d6: '0px 0px 13px 0px rgba(242, 240, 236, 0.10), 0px 2px 4px -2px rgba(239, 231, 215, 0.06)',
+      },
+      animation: {
+        'infinite-scroll': 'infinite-scroll 25s linear infinite',
+      },
+      keyframes: {
+        'infinite-scroll': {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(-100%)' },
+        },
+      },
+      screens: {
+        ll: '1440px',
       },
     },
   },

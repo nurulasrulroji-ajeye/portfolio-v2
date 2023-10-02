@@ -8,13 +8,13 @@ type TSocmedListProps = {
 
 export const SocmedList = (props: TSocmedListProps) => {
   return (
-    <div className="flex w-full gap-3">
+    <div className="flex gap-2 md:gap-3">
       {props.data.map((item) => (
         <Link
           href={item.link}
           target="_blank"
           key={item.id}
-          className="text-lg w-8 h-8 md:text-2xl md:h-10 md:w-10 rounded-full bg-dark-primary flex justify-center items-center text-white hover:bg-white-color hover:text-dark-primary hover:border hover:border-dark-primary transition-all ease-in duration-300"
+          className="text-base w-7 h-7 md:text-lg md:h-8 md:w-8 lg:text-2xl lg:w-10 lg:h-10 rounded-full bg-dark-primary flex justify-center items-center text-white hover:bg-white-color hover:text-dark-primary hover:border hover:border-dark-primary transition-all ease-in duration-300 dark:bg-white-color dark:text-dark-primary dark:hover:border-white-color dark:hover:bg-dark-primary dark:hover:text-white-color"
         >
           {item.icon}
         </Link>
