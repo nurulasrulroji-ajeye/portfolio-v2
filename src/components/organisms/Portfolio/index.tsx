@@ -96,7 +96,10 @@ export const Portfolio = () => {
                 ) : null}
               </div>
               {scrollTop > (medium ? 3100 : 3300) ? (
-                <motion.div {...basicScaleDown}>
+                <motion.div
+                  {...basicScaleDown}
+                  className="w-full flex justify-end"
+                >
                   <a
                     href="https://opinia.id/home"
                     target="_blank"
@@ -138,7 +141,10 @@ export const Portfolio = () => {
               ) : null}
             </div>
             {scrollTop > (medium ? 2400 : 4100) ? (
-              <motion.div {...basicScaleDown}>
+              <motion.div
+                {...basicScaleDown}
+                className="w-full flex justify-end"
+              >
                 <a
                   href="https://github.com/nurulasrulroji-ajeye?tab=repositories"
                   target="_blank"
@@ -180,7 +186,7 @@ export const Portfolio = () => {
               ) : null}
             </div>
             {scrollTop > (medium ? 3200 : 4600) ? (
-              <motion.div {...basicScaleUp}>
+              <motion.div {...basicScaleUp} className="w-full flex justify-end">
                 <a
                   href="https://github.com/nurulasrulroji-ajeye?tab=repositories"
                   target="_blank"

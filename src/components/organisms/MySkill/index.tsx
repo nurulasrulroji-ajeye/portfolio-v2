@@ -156,7 +156,7 @@ export const MySkill = () => {
 
             <motion.div
               {...basicFadeUp3}
-              className="pt-5 w-full flex justify-end"
+              className="pt-5 w-full flex justify-center lg:justify-end"
             >
               <Button
                 onClick={() => setOpenModalCertificate(true)}

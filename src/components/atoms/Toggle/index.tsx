@@ -20,8 +20,10 @@ export const Toggle = () => {
   }, [currentTheme, initTheme]);
 
   return (
-    <div
-      onClick={() => (theme == 'dark' ? setTheme('light') : setTheme('dark'))}
+    <button
+      onClick={() =>
+        currentTheme === 'dark' ? setTheme('light') : setTheme('dark')
+      }
       className="w-20 shadow-1 dark:shadow-d1 p-1 flex justify-start dark:justify-end rounded-full "
     >
       {mounted && theme == 'dark' ? (
@@ -39,6 +41,6 @@ export const Toggle = () => {
           <Sun />
         </motion.div>
       )}
-    </div>
+    </button>
   );
 };

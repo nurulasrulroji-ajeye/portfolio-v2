@@ -14,7 +14,7 @@ export const Hero = () => {
     >
       <CardProfile
         image={heroImg}
-        name="Nurul Asrul Roji (Aji/Ajeye_)"
+        name="Nurul Asrul Roji"
         location="South Jakarta, Indonesia"
         description="Creative, Great UX, Flexible and Affordable Website"
       />
