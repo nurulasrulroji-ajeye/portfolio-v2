@@ -2,8 +2,19 @@ import React, { useEffect, useState } from 'react';
 import { CatseeIcon, GoogleIcon, WaIcon, messageSent } from '@/assets';
 import { Button } from '@/components/atoms';
 import { FormMessage, Modal, Tabs } from '@/components/molecules';
-import { TTabs } from '@/domain/entities/PartsType';
+import { ISendGmail, TTabs } from '@/domain/entities/PartsType';
 import Lottie from 'lottie-react';
+import ContactServices from '@/domain/services/contactServices';
+import { useAppSelector } from '@/app/hook';
+import { motion } from 'framer-motion';
+import { useMediaQuery } from 'react-responsive';
+import {
+  basicFadeDown,
+  basicFadeUp,
+  basicFadeUp2,
+  basicScaleDown,
+  basicScaleUp,
+} from '@/config';
 
 const tabData: TTabs[] = [
   { id: '1', name: 'Gmail', icon: <GoogleIcon /> },
@@ -11,12 +22,9 @@ const tabData: TTabs[] = [
 ];
 
 export const Contact = () => {
-  const [inputMsg, setInputMsg] = useState<{
-    name: string;
-    email: string;
-    subject: string;
-    message: string;
-  }>({
+  const { scrollTop } = useAppSelector((state) => state.scroll);
+  const medium = useMediaQuery({ minWidth: 768 });
+  const [inputMsg, setInputMsg] = useState<ISendGmail>({
     name: '',
     email: '',
     subject: '',
@@ -44,6 +52,7 @@ export const Contact = () => {
   const onSend = async () => {
     setLoading(true);
     try {
+      const contactServices = new ContactServices();
       if (
         inputMsg.name.length &&
         inputMsg.email.length &&
@@ -51,20 +60,9 @@ export const Contact = () => {
         inputMsg.subject.length
       ) {
         setMsgErr('');
-        const payload = await fetch('http://localhost:3000/api/contact', {
-          method: 'POST',
-          headers: {
-            'Content-type': 'application/json',
-          },
-          body: JSON.stringify({
-            name: inputMsg.name,
-            email: inputMsg.email,
-            subject: inputMsg.subject,
-            message: inputMsg.message,
-          }),
-        });
-        const data = await payload.json();
-        if (data.status === 200) {
+        const payload = await contactServices.sendGmail(inputMsg);
+
+        if (payload.status === 200) {
           setInputMsg({ name: '', email: '', subject: '', message: '' });
           setOpenThx(true);
         }
@@ -101,47 +99,70 @@ export const Contact = () => {
       className="w-full px-5 md:px-8 lg:px-16 ll:px-40 bg-white-color pt-32 lg:pt-40 pb-20 relative dark:bg-dark-primary"
       id="contact"
     >
-      <div className="text-[9rem] absolute -top-[4.5rem] inset-x-0 flex justify-center lg:text-[16rem] lg:justify-end lg:pr-40 lg:-top-28">
-        <CatseeIcon />
-      </div>
+      {scrollTop > (medium ? 3900 : 5200) ? (
+        <motion.div
+          {...basicFadeUp}
+          className="text-[9rem] absolute -top-[4.5rem] inset-x-0 flex justify-center lg:text-[16rem] lg:justify-end lg:pr-40 lg:-top-28"
+        >
+          <CatseeIcon />
+        </motion.div>
+      ) : null}
       <div className="flex flex-col gap-4 mb-10 md:mb-20">
-        <p className="text-lg md:text-xl lg:text-2xl font-serif font-bold text-dark-primary md:text-center dark:text-white-color">
-          GET IN TOUCH.
-        </p>
-        <h4 className="text-3xl md:text-4xl lg:text-5xl font-primary text-dark-primary md:text-center dark:text-white-color">
-          Do you have a question, an idea, or a project you need help with?
-          Contact me!
-        </h4>
+        {scrollTop > (medium ? 3900 : 5300) ? (
+          <motion.p
+            {...basicFadeDown}
+            className="text-lg md:text-xl lg:text-2xl font-serif font-bold text-dark-primary md:text-center dark:text-white-color"
+          >
+            GET IN TOUCH.
+          </motion.p>
+        ) : null}
+        {scrollTop > (medium ? 3900 : 5300) ? (
+          <motion.h4
+            {...basicScaleUp}
+            className="text-3xl md:text-4xl lg:text-5xl font-primary text-dark-primary md:text-center dark:text-white-color"
+          >
+            Do you have a question, an idea, or a project you need help with?
+            Contact me!
+          </motion.h4>
+        ) : null}
       </div>
-      <div className="w-full lg:max-w-3xl lg:mx-auto">
-        <Tabs
-          layoutId="contact"
-          data={tabData}
-          activeTab={tab}
-          setActiveTab={setTab}
-        />
-      </div>
-      <div className="w-full shadow-6 bg-white-color rounded-[30px] p-5 mt-4 lg:max-w-3xl lg:mx-auto dark:bg-dark-primary dark:shadow-d6">
-        {tab === '1' ? (
-          <FormMessage
-            isWa={false}
-            dataMsg={inputMsg}
-            setDataMsg={setInputMsg}
-            errMsg={msgErr}
-            disableSend={loading}
-            onSend={onSend}
+      {scrollTop > (medium ? 4000 : 5300) ? (
+        <motion.div {...basicFadeUp} className="w-full lg:max-w-3xl lg:mx-auto">
+          <Tabs
+            layoutId="contact"
+            data={tabData}
+            activeTab={tab}
+            setActiveTab={setTab}
           />
-        ) : (
-          <FormMessage
-            isWa={true}
-            dataMsg={inputMsgWa}
-            setDataMsg={setInputMsgWa}
-            errMsg={msgErr}
-            disableSend={loading}
-            onSend={onSendWa}
-          />
-        )}
-      </div>
+        </motion.div>
+      ) : null}
+      {scrollTop > (medium ? 4000 : 5500) ? (
+        <motion.div
+          {...basicFadeUp2}
+          className="w-full shadow-6 bg-white-color rounded-[30px] p-5 mt-4 lg:max-w-3xl lg:mx-auto dark:bg-dark-primary dark:shadow-d6"
+        >
+          {tab === '1' ? (
+            <FormMessage
+              isWa={false}
+              dataMsg={inputMsg}
+              setDataMsg={setInputMsg}
+              errMsg={msgErr}
+              disableSend={loading}
+              onSend={onSend}
+            />
+          ) : (
+            <FormMessage
+              isWa={true}
+              dataMsg={inputMsgWa}
+              setDataMsg={setInputMsgWa}
+              errMsg={msgErr}
+              disableSend={loading}
+              onSend={onSendWa}
+            />
+          )}
+        </motion.div>
+      ) : null}
+
       <Modal
         show={openThx}
         onClose={() => {

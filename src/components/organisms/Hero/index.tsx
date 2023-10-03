@@ -3,6 +3,8 @@ import { SocmedData } from '@/domain/dummyData/SocmedData';
 import { heroImg } from '@/assets';
 import { SocmedList } from '@/components/atoms';
 import { CardProfile } from '@/components/molecules';
+import { motion } from 'framer-motion';
+import { basicFadeLeft, basicFadeRight, basicScaleUp } from '@/config';
 
 export const Hero = () => {
   return (
@@ -17,7 +19,7 @@ export const Hero = () => {
         description="Creative, Great UX, Flexible and Affordable Website"
       />
       <div className="flex flex-col gap-3 md:gap-8">
-        <div>
+        <motion.div {...basicFadeLeft}>
           <h4 className="font-serif font-bold text-sm text-dark-primary md:text-lg lg:text-xl dark:text-white-color">
             Hallo, I{"'"}m a
           </h4>
@@ -32,17 +34,23 @@ export const Hero = () => {
               loop: true,
             }}
           />
-        </div>
-        <p className="font-serif text-typo-neutral-80 leading-tight text-base md:text-lg lg:text-2xl dark:text-typo-neutral-40">
+        </motion.div>
+        <motion.p
+          {...basicFadeRight}
+          className="font-serif text-typo-neutral-80 leading-tight text-base md:text-lg lg:text-2xl dark:text-typo-neutral-40"
+        >
           Creative frontend wizard with expertise in HTML, CSS, and
           JavaScript/TypeScript. Crafting captivating web experiences is i{"'"}m
           specialty. With a keen eye for design and a passion for innovation, i
           {"'"}m bring your digital vision to life. Get in touch to unlock the
           full potential of your online presence.
-        </p>
-        <div className="pt-5 w-full flex justify-start md:justify-center lg:pt-6">
+        </motion.p>
+        <motion.div
+          {...basicScaleUp}
+          className="pt-5 w-full flex justify-start md:justify-center lg:pt-6"
+        >
           <SocmedList data={SocmedData} />
-        </div>
+        </motion.div>
       </div>
     </div>
   );

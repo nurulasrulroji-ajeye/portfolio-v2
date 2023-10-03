@@ -5,6 +5,13 @@ export type TNavList = {
     label: string
 }
 
+export interface ISendGmail {
+    name: string;
+    email: string;
+    subject: string;
+    message: string;
+}
+
 export type TTabs = {
     id: string,
     name: string,

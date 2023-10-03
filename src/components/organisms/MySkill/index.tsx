@@ -10,6 +10,7 @@ import {
 } from '@/domain/dummyData/SkillData';
 import { TabsData } from '@/domain/dummyData/PartsData';
 import { CatstandIcon } from '@/assets';
+import { basicFadeDown, basicFadeUp2, basicFadeUp3 } from '@/config';
 
 export const MySkill = () => {
   const { scrollTop } = useAppSelector((state) => state.scroll);
@@ -29,9 +30,15 @@ export const MySkill = () => {
       className="w-full bg-white-color pt-32 lg:pt-40 px-5 md:px-8 lg:px-16 ll:px-40 lg:pb-20 pb-5 relative dark:bg-dark-primary"
       id="skills"
     >
-      <div className="text-[9rem] absolute -top-[4.5rem] inset-x-0 flex justify-center lg:text-[16rem] lg:justify-end lg:pr-40 lg:-top-28">
-        <CatstandIcon />
-      </div>
+      {scrollTop > 200 ? (
+        <motion.div
+          {...basicFadeDown}
+          className="text-[9rem] absolute -top-[4.5rem] inset-x-0 flex justify-center lg:text-[16rem] lg:justify-end lg:pr-40 lg:-top-28"
+        >
+          <CatstandIcon />
+        </motion.div>
+      ) : null}
+
       <h1 className="text-3xl md:text-4xl lg:text-5xl text-dark-primary font-primary dark:text-white-color">
         My Skill.
       </h1>
@@ -134,23 +141,32 @@ export const MySkill = () => {
             )}
           </motion.div>
         </div>
-        <div className="lg:basis-[40%] flex flex-col justify-center items-center">
-          <p className="font-serif text-center text-typo-neutral-80 text-base md:text-lg lg:text-2xl lg:text-left dark:text-typo-neutral-40">
-            Embracing a never-ending learning journey, I delight in leveling up
-            my frontend expertise. With boundless enthusiasm, I chase
-            opportunities to broaden my skill set. Fueled by a zest for growth,
-            I fearlessly tackle challenges, unlocking the secrets to becoming a
-            fun and accomplished frontend wizard.
-          </p>
-          <div className="pt-5 w-full flex justify-end">
-            <Button
-              onClick={() => setOpenModalCertificate(true)}
-              variant="primary"
+        {scrollTop > 500 ? (
+          <div className="lg:basis-[40%] flex flex-col justify-center items-center">
+            <motion.p
+              {...basicFadeUp2}
+              className="font-serif text-center text-typo-neutral-80 text-base md:text-lg lg:text-2xl lg:text-left dark:text-typo-neutral-40"
             >
-              Licenses and Certifications
-            </Button>
+              Embracing a never-ending learning journey, I delight in leveling
+              up my frontend expertise. With boundless enthusiasm, I chase
+              opportunities to broaden my skill set. Fueled by a zest for
+              growth, I fearlessly tackle challenges, unlocking the secrets to
+              becoming a fun and accomplished frontend wizard.
+            </motion.p>
+
+            <motion.div
+              {...basicFadeUp3}
+              className="pt-5 w-full flex justify-end"
+            >
+              <Button
+                onClick={() => setOpenModalCertificate(true)}
+                variant="primary"
+              >
+                Licenses and Certifications
+              </Button>
+            </motion.div>
           </div>
-        </div>
+        ) : null}
       </div>
       <Modal
         show={openModalSkill}

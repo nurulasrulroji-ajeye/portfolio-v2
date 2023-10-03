@@ -129,9 +129,15 @@ export const FormMessage = <T extends boolean>(props: FormMessageProps<T>) => {
           variant="primary"
           onClick={props.onSend}
           disabled={props.disableSend}
-          className="disabled:cursor-not-allowed disabled:border-none disabled:bg-typo-neutral-80 disabled:text-white-color disabled:hover:bg-typo-neutral-80 disabled:hover:text-white-color dark:disabled:bg-typo-neutral-40 dark:disabled:text-dark-primary dark:disabled:hover:bg-typo-neutral-40 dark:disabled:hover:text-dark-primary"
+          className="disabled:cursor-not-allowed disabled:border-none disabled:bg-black disabled:text-white-color disabled:hover:bg-black disabled:hover:text-white-color dark:disabled:bg-white dark:disabled:text-dark-primary dark:disabled:hover:bg-white dark:disabled:hover:text-dark-primary"
         >
-          Send!
+          {props.disableSend ? (
+            <div className="relative w-6 h-6 animate-spin rounded-full bg-gradient-to-r from-white-color via-white to-black dark:from-dark-primary dark:via-black dark:to-white">
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-black rounded-full border-1 border-white dark:bg-white dark:border-black" />
+            </div>
+          ) : (
+            'Send'
+          )}
         </Button>
       </div>
     </div>
